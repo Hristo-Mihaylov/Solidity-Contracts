@@ -1,0 +1,35 @@
+constructor() public {
+st = Working;
+disc = 0;
+}
+
+function signal() external {
+require( st == Working );
+st = Completed;
+disc = 10;
+}
+
+function collect_1_Y() external {
+require( st == Completed );
+st = Done_1;
+disc = 10;
+}
+
+function collect_1_N() external {
+require( st == Completed );
+st = Delay;
+disc = 5;
+}
+
+function collect_2_Y() external {
+require( st == Delay );
+st = Done_2;
+disc = 5;
+}
+
+function collect_2_N() external {
+require( st == Delay );
+st = Forfeit;
+disc = 0;
+}
+
